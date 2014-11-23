@@ -17,13 +17,57 @@ import control.Control;
 
 public class Main
 {
+	// exercise3: tells the maximum number of arguments of any print statement
+	private int maxArgs(Stm.T stm)
+	{
+		int numArgsPrint = 0;
+		Stm.Print temp = (Stm.Print) stm;
+		while (!(temp.explist instanceof ExpList.Last))
+		{
+			if (temp.explist instanceof ExpList.Pair)
+			{
+				numArgsPrint++;
+				temp.explist = ((ExpList.Pair)temp.explist).list;
+			}
+			else 
+			{
+				new Bug();
+			    return -1;
+			}
+		}
+		numArgsPrint++;
+		return numArgsPrint;
+	}
+	
   // ///////////////////////////////////////////
   // maximum number of args
 
   private int maxArgsExp(Exp.T exp)
   {
-    new Todo();
-    return -1;
+	  if (exp instanceof Exp.Eseq) 
+	  {
+	      Exp.Eseq e = (Exp.Eseq)exp;
+	      int n1 = maxArgsStm(e.stm);
+	      int n2 = maxArgsExp(e.exp);
+	      return n1 >= n2 ? n1 : n2;
+	  }
+	  else if (exp instanceof Exp.Id)
+	  {
+		  return 0;
+	  }
+	  else if (exp instanceof Exp.Num)
+	  {
+		  return 0;
+	  }
+	  else if (exp instanceof Exp.Op)
+	  {
+		  return 0;
+	  }
+	  else
+	  {
+		  new Bug();
+		  return 0;
+	  }
   }
 
   private int maxArgsStm(Stm.T stm)
@@ -35,16 +79,16 @@ public class Main
 
       return n1 >= n2 ? n1 : n2;
     } else if (stm instanceof Stm.Assign) {
-      new Todo();
-      return -1;
+      int num = maxArgsExp(((Stm.Assign) stm).exp);
+      return num;
     } else if (stm instanceof Stm.Print) {
-      new Todo();
-      return -1;
+      int num = maxArgs(stm);
+      return num;
     } else
       new Bug();
     return 0;
   }
-
+  
   // ////////////////////////////////////////
   // interpreter
 
@@ -203,7 +247,7 @@ public class Main
       int numArgs = maxArgsStm(prog);
       System.out.println(numArgs);
     }
-
+  
     // interpret a given program
     if (Control.ConSlp.action == Control.ConSlp.T.INTERP) {
       interpStm(prog);
