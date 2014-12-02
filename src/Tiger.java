@@ -24,7 +24,8 @@ public class Tiger
     // the straight-line interpreter (and compiler)    
     switch (Control.ConSlp.action){
     case NONE:
-      System.exit(0);
+      //exercise7: if you want to see the result you must // this one.
+      //System.exit(0);
       break;
     default:
       slp.Main slpmain = new slp.Main();
@@ -35,7 +36,6 @@ public class Tiger
       slpmain.doit(slp.Samples.prog);
       System.exit(0);
     }
-
     
     if (fname == null) {
       cmd.usage();

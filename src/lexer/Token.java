@@ -19,8 +19,12 @@ public class Token
     TOKEN_DOT, // "."
     TOKEN_ELSE, // "else"
     TOKEN_EOF, // EOF
+    TOKEN_EQ, // == (added by myself)
     TOKEN_EXTENDS, // "extends"
     TOKEN_FALSE, // "false"
+    TOKEN_FOR, // "for" (added by myself)
+    TOKEN_GT, // ">" (added by myself)
+    TOKEN_GTEQ, // ">=" (added by myself)
     TOKEN_ID, // Identifier
     TOKEN_IF, // "if"
     TOKEN_INT, // "int"
@@ -29,8 +33,10 @@ public class Token
     TOKEN_LENGTH, // "length"
     TOKEN_LPAREN, // "("
     TOKEN_LT, // "<"
+    TOKEN_LTEQ, // "<=" (added by myself)
     TOKEN_MAIN, // "main"
     TOKEN_NEW, // "new"
+    TOKEN_NEQ, // "!=" (added by myself)
     TOKEN_NOT, // "!"
     TOKEN_NUM, // IntegerLiteral
     // "out" is not a Java key word, but we treat it as
@@ -42,6 +48,7 @@ public class Token
     TOKEN_PUBLIC, // "public"
     TOKEN_RBRACE, // "}"
     TOKEN_RBRACK, // "]"
+    TOKEN_REAL, // 0.0 (added by myself)
     TOKEN_RETURN, // "return"
     TOKEN_RPAREN, // ")"
     TOKEN_SEMI, // ";"
